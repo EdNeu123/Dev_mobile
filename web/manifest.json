@@ -1,6 +1,6 @@
 {
-    "name": "meuapp",
-    "short_name": "meuapp",
+    "name": "cartao_visita",
+    "short_name": "cartao_visita",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

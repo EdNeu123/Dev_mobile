@@ -1,211 +1,212 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const CartaoVisitaApp());
-}
-
-class CartaoVisitaApp extends StatelessWidget {
-  const CartaoVisitaApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Cartão de Visita',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Roboto',
-      ),
-      home: const CartaoVisita(),
-    );
-  }
+  runApp(const CartaoVisita());
 }
 
 class CartaoVisita extends StatelessWidget {
   const CartaoVisita({super.key});
 
-  // ── Cores do tema ──
-  static const Color azulPrimario = Color(0xFF1B3A5C);
-  static const Color azulClaro = Color(0xFF2C5F8A);
-  static const Color begeClaro = Color(0xFFF5F0E8);
-  static const Color begeMedio = Color(0xFFE8DFD0);
-  static const Color textoCinza = Color(0xFF6B6B6B);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Cartão de Visita - Eduardo Neumann',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      home: const PaginaPrincipal(),
+    );
+  }
+}
+
+class PaginaPrincipal extends StatelessWidget {
+  const PaginaPrincipal({super.key});
+
+  // Cores do tema
+  static const Color corPrimaria = Color(0xFF0D1B2A);
+  static const Color corSecundaria = Color(0xFF1B2D45);
+  static const Color corDestaque = Color(0xFF00BFA6);
+  static const Color corTexto = Colors.white;
+  static const Color corTextoSecundario = Color(0xFFB0BEC5);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: begeClaro,
-      body: Center(
-        child: Container(
-          width: 360,
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: azulPrimario.withOpacity(0.15),
-                blurRadius: 30,
-                offset: const Offset(0, 10),
-              ),
-            ],
+      backgroundColor: corPrimaria,
+      appBar: AppBar(
+        title: const Text(
+          "Cartão de Visita Digital",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            letterSpacing: 1.2,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // ── Header azul com avatar ──
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 32),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [azulPrimario, azulClaro],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    // Avatar
-                    Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: begeMedio, width: 3),
-                      ),
-                      child: const CircleAvatar(
-                        radius: 48,
-                        backgroundColor: begeMedio,
-                        child: Icon(
-                          Icons.person,
-                          size: 52,
-                          color: azulPrimario,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Nome
-                    const Text(
-                      'Eduardo Neuhaus',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-
-                    // Título profissional
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        'Desenvolvedor Full Stack',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: begeMedio,
-                          letterSpacing: 0.8,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+        ),
+        backgroundColor: corSecundaria,
+        foregroundColor: corTexto,
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            width: 380,
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
+            margin: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [corSecundaria, Color(0xFF162232)],
               ),
-
-              // ── Informações de contato ──
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  children: [
-                    _buildContatoItem(
-                      icon: Icons.email_outlined,
-                      texto: 'eduardo@email.com',
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContatoItem(
-                      icon: Icons.phone_outlined,
-                      texto: '(47) 99999-9999',
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContatoItem(
-                      icon: Icons.location_on_outlined,
-                      texto: 'Joinville, SC',
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContatoItem(
-                      icon: Icons.language_outlined,
-                      texto: 'github.com/EdNeu123',
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContatoItem(
-                      icon: Icons.code_outlined,
-                      texto: 'linkedin.com/in/eduardo',
-                    ),
-                  ],
-                ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: corDestaque.withAlpha(60),
+                width: 1.5,
               ),
-
-              // ── Footer com frase ──
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                decoration: const BoxDecoration(
-                  color: begeMedio,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withAlpha(100),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+                BoxShadow(
+                  color: corDestaque.withAlpha(30),
+                  blurRadius: 30,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Avatar com borda estilizada
+                Container(
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: const LinearGradient(
+                      colors: [corDestaque, Color(0xFF00897B)],
+                    ),
+                  ),
+                  child: const CircleAvatar(
+                    radius: 45,
+                    backgroundImage: AssetImage('assets/foto.png'),
                   ),
                 ),
-                child: const Text(
-                  'Transformando ideias em código ✨',
+                const SizedBox(height: 20),
+
+                // Nome completo
+                const Text(
+                  "Eduardo Jhonathan\nPassos Neumann",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 13,
-                    fontStyle: FontStyle.italic,
-                    color: azulPrimario,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: corTexto,
+                    height: 1.3,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+
+                // Título profissional com chip estilizado
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: corDestaque.withAlpha(30),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: corDestaque.withAlpha(80),
+                    ),
+                  ),
+                  child: const Text(
+                    "Analista de Sistemas",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: corDestaque,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // Divisor estilizado
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 1,
+                        color: corDestaque.withAlpha(40),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Icon(
+                        Icons.diamond_outlined,
+                        color: corDestaque.withAlpha(120),
+                        size: 16,
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 1,
+                        color: corDestaque.withAlpha(40),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+
+                // Informações de contato
+                _buildInfoRow(
+                  Icons.email_outlined,
+                  "eduardo.neumann@totvs.com.br",
+                ),
+                const SizedBox(height: 14),
+                _buildInfoRow(
+                  Icons.phone_outlined,
+                  "(47) 98820-7170",
+                ),
+                const SizedBox(height: 14),
+                _buildInfoRow(
+                  Icons.code_rounded,
+                  "github.com/EdNeu123",
+                ),
+                const SizedBox(height: 14),
+                _buildInfoRow(
+                  Icons.school_outlined,
+                  "ADS - Faculdade Senac Joinville",
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  /// Widget reutilizável para cada linha de contato
-  Widget _buildContatoItem({
-    required IconData icon,
-    required String texto,
-  }) {
+  /// Constrói uma linha de informação de contato com ícone
+  Widget _buildInfoRow(IconData icone, String texto) {
     return Row(
       children: [
         Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: begeClaro,
-            borderRadius: BorderRadius.circular(12),
+            color: corDestaque.withAlpha(25),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(icon, color: azulPrimario, size: 22),
+          child: Icon(icone, color: corDestaque, size: 20),
         ),
-        const SizedBox(width: 16),
+        const SizedBox(width: 14),
         Expanded(
           child: Text(
             texto,
             style: const TextStyle(
-              fontSize: 15,
-              color: textoCinza,
+              fontSize: 14,
+              color: corTextoSecundario,
             ),
           ),
         ),

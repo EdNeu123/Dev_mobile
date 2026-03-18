@@ -1,4 +1,4 @@
-package com.example.meuapp
+package com.example.cartao_visita
 
 import io.flutter.embedding.android.FlutterActivity
 
