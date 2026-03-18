@@ -34,9 +34,7 @@ O app apresenta informações profissionais de forma organizada, utilizando widg
 ## Screenshots
 
 <!-- Adicione aqui os screenshots do app rodando -->
-![Screenshot do App](screenshots/screenshot.png)
-
-> **Nota:** Substitua o caminho acima pelo screenshot real do app rodando.
+![Screenshot do App](screenshots/image.png)
 
 ## Como Rodar o Projeto
 
