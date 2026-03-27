@@ -1,98 +1,68 @@
-# Dashboard Responsivo - Estoque de Camisetas
+# Dashboard Responsivo
 
-## Sobre o Projeto
+**Atividade Prática — Aula 06: Layouts Avançados e Responsividade**
 
-Dashboard responsivo em Flutter que exibe métricas de um estoque de camisetas, adaptando o layout automaticamente para mobile, tablet e desktop. Desenvolvido como atividade prática da **Aula 06 - Layouts Avançados** do curso de ADS.
+---
 
-## Autor
+## Aluno
 
-- **Nome:** Eduardo Jhonathan Passos Neumann
-- **Curso:** Análise e Desenvolvimento de Sistemas - 5ª Fase
-- **Instituição:** Faculdade Senac Joinville
-- **Disciplina:** Desenvolvimento Mobile com Flutter
-- **Professor:** Gabriel Caixeta Silva
+Eduardo Jhonathan Passos Neumann  
+ADS — 5ª Fase | Faculdade Senac Joinville | 2026/1
+
+---
+
+## Descrição
+
+Dashboard responsivo em Flutter que se adapta automaticamente a diferentes tamanhos de tela (mobile, tablet e desktop) usando MediaQuery e breakpoints.
+
+---
 
 ## Funcionalidades
 
-- 4 cards de métricas: total em estoque, modelos cadastrados, estoque baixo e valor total
-- Layout responsivo com 3 breakpoints via `MediaQuery`
-- Widget reutilizável `DashboardCard` (aceita título, valor, ícone e cor)
-- Tabela detalhada de estoque com indicadores visuais de quantidade crítica
-- Badge de breakpoint ativo mostrando dispositivo e largura em pixels
-- Dados em memória com modelo `Camiseta`
+- 4 cards de métricas com ícone, título, valor e cor personalizada
+- Widget reutilizável `DashboardCard`
+- Layout responsivo com 3 breakpoints:
+  - **Mobile (< 600px):** Column — 1 card por linha
+  - **Tablet (600–900px):** Wrap — 2 cards por linha
+  - **Desktop (> 900px):** Row com Expanded — 4 cards na mesma linha
 
-### Breakpoints
-
-| Dispositivo | Largura     | Layout                          |
-|-------------|-------------|---------------------------------|
-| Mobile      | < 600px     | `Column` — 1 card por linha     |
-| Tablet      | 600 - 900px | `Wrap` — 2 cards por linha      |
-| Desktop     | > 900px     | `Row` + `Expanded` — 4 em linha |
-
-### Widgets Utilizados
-
-- `MediaQuery` — detecção de largura da tela
-- `Expanded` — distribuição de espaço no layout desktop
-- `Wrap` — grid flexível no layout tablet
-- `Stack` + `Positioned` — badge sobreposto na tabela de estoque
-- `SingleChildScrollView` — scroll quando conteúdo excede a tela
+---
 
 ## Screenshots
 
-<!-- Substitua pelos screenshots reais do app rodando -->
-![Mobile](screenshots/mobile.png)
-![Tablet](screenshots/tablet.png)
-![Desktop](screenshots/desktop.png)
+> Adicionar 3 screenshots (mobile, tablet, desktop) aqui.
 
-## Como Rodar o Projeto
+---
 
-### Pré-requisitos
+## Conceitos aplicados
 
-- Flutter SDK instalado ([guia de instalação](https://docs.flutter.dev/get-started/install))
-- Editor de código (VS Code ou Android Studio)
+- `MediaQuery.of(context).size.width` para detectar largura da tela
+- Lógica condicional `if/else` para alternar layouts
+- `Expanded` para distribuir espaço igualmente
+- `Wrap` para quebrar cards em 2 colunas
+- `Column` e `Row` para organização
+- `Container` com `BoxDecoration` e `borderRadius`
+- Widget reutilizável (`DashboardCard`) com parâmetros
+- `SingleChildScrollView` para evitar overflow
 
-### Passos
+---
+
+## Fluxo de responsividade
+
+```
+largura < 600px   →  Column (vertical, 1 card por linha)
+600px ≤ largura < 900px  →  Wrap (grid 2×2)
+largura ≥ 900px   →  Row + Expanded (horizontal, 4 cards)
+```
+
+---
+
+## Como executar
 
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/EdNeu123/dashboard-responsivo-eduardo.git
-
-# 2. Entre na pasta do projeto
-cd dashboard-responsivo-eduardo
-
-# 3. Instale as dependências
+cd dashboard_responsivo
 flutter pub get
-
-# 4. Execute o app
 flutter run
 ```
 
-Para testar responsividade, rode no Chrome e redimensione a janela:
-```bash
-flutter run -d chrome
-```
-
-## Estrutura de Widgets
-
-```
-MaterialApp
-└── Scaffold
-    ├── AppBar
-    └── SingleChildScrollView
-        └── Column
-            ├── Row (badge de breakpoint)
-            ├── Column / Wrap / Row (layout responsivo)
-            │   ├── DashboardCard (Total em Estoque)
-            │   ├── DashboardCard (Modelos Cadastrados)
-            │   ├── DashboardCard (Estoque Baixo)
-            │   └── DashboardCard (Valor Total)
-            └── Stack
-                ├── Container (tabela de estoque)
-                └── Positioned (badge "10 itens")
-```
-
-## Tecnologias
-
-- **Flutter** 3.x
-- **Dart** 3.x
-- **Material Design 3**
+Para testar os breakpoints, redimensione a janela no desktop ou use o Device Preview.
