@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/lista_produtos.dart';
+import 'routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Produtos',
       debugShowCheckedModeBanner: false,
-      home: const ListaProdutos(),
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        useMaterial3: true,
+      ),
+      initialRoute: AppRoutes.home,
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
